@@ -7,6 +7,6 @@ This is the main repository for cardsweep.com. We decided we don't really care i
 - [react-router](https://github.com/ReactTraining/react-router)
 - [create-react-app](https://github.com/facebookincubator/create-react-app)
 - [glamor](https://github.com/threepointone/glamor)
-- [react-bootstrap](https://react-bootstrap.github.io/) {prolly}
+- [react-mdl](https://github.com/react-mdl/react-mdl)
 - [yarn](https://yarnpkg.com/)
 - [Netlify](https://www.netlify.com/)

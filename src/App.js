@@ -1,15 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  Layout,
+  Header,
+  Navigation,
+  Drawer,
+  Content
+} from 'react-mdl/lib/Layout';
+import HeaderLeft from './components/HeaderLeft';
+import Hero from './components/Hero';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2 style={{ fontWeight: 100}}>Future Home of CardSweep</h2>
-        </div>
+        <Layout fixedHeader>
+            <Header
+            title={<HeaderLeft />}
+            >
+                <Navigation>
+
+                </Navigation>
+            </Header>
+            <Drawer title="CardSweep">
+                <Navigation>
+
+                </Navigation>
+            </Drawer>
+            <Content>
+              <Hero />
+            </Content>
+        </Layout>
       </div>
     );
   }
