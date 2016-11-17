@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { style } from 'glamor'
-import HeaderLeft from './HeaderLeft'
+import LogoName from '../../LogoName'
 import SideMenu from './SideMenu'
-import Theme from '../Theme'
-import menuIcon from '../images/menuIcon.svg'
+import Theme from '../../../Theme'
+import menuIcon from '../../../images/menuIcon.svg'
 
 const styles = {
   navBarStyle: style({
@@ -100,7 +100,7 @@ class NavBar extends Component {
         <button onClick={this.showMenu} {...styles.buttonStyle}>
           <img className={styles.imgStyle} src={menuIcon} alt='Menu' />
         </button>
-        <HeaderLeft />
+        <LogoName />
         {this.props.children}
         <SideMenu show={this.state.showMenu} showMenu={this.showMenu} />
       </nav>

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { style } from 'glamor'
-import Theme from '../Theme'
+import Theme from '../../../Theme'
 
 const styles = {
   sideMenu: style({

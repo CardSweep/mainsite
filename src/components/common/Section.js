@@ -12,8 +12,8 @@ const sectionStyle = style({
 const Section = (props) => {
   let className = sectionStyle
 
-  if (props.className !== undefined) {
-    className += ` ${props.className}`
+  if (props.css) {
+    className += ` ${props.css}`
   }
 
   return (
@@ -25,7 +25,8 @@ const Section = (props) => {
 
 Section.propTypes = {
   children: PropTypes.element,
-  className: PropTypes.object
+  className: PropTypes.object,
+  css: PropTypes.object
 }
 
 export default Section

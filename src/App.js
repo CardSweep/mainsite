@@ -1,22 +1,26 @@
 import React, { Component } from 'react'
 import { style } from 'glamor'
-import NavBar from './components/NavBar'
+import NavBar from './components/common/nav/NavBar'
 import Hero from './components/Hero'
-import Section from './components/Section'
-import Footer from './components/Footer'
+import Section from './components/common/Section'
+import Footer from './components/common/footer/Footer'
 
-const appStyle = style({
-  flex: 1
-})
+import 'glamor/reset'
+
+const styles = {
+  appStyle: style({
+    flex: 1
+  }),
+}
 
 class App extends Component {
   render () {
     return (
-      <div className={appStyle}>
+      <div className={styles.appStyle}>
         <NavBar />
         <Hero />
-        <Section />
-        <Section />
+        <Section css={style({backgroundColor: '#607D8B'})} />
+        <Section css={style({backgroundColor: '#BDBDBD'})} />
         <Footer />
       </div>
     )
