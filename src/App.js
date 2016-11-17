@@ -1,38 +1,24 @@
-import React, { Component } from 'react';
-import {
-  Layout,
-  Header,
-  Navigation,
-  Drawer,
-  Content
-} from 'react-mdl/lib/Layout';
-import HeaderLeft from './components/HeaderLeft';
-import Hero from './components/Hero';
+import React, { Component } from 'react'
+import { style } from 'glamor'
+import NavBar from './components/NavBar'
+import Hero from './components/Hero'
+import Section from './components/Section'
+
+const appStyle = style({
+  flex: 1
+})
 
 class App extends Component {
-  render() {
+  render () {
     return (
-      <div className="App">
-        <Layout fixedHeader>
-            <Header
-            title={<HeaderLeft />}
-            >
-                <Navigation>
-
-                </Navigation>
-            </Header>
-            <Drawer title="CardSweep">
-                <Navigation>
-
-                </Navigation>
-            </Drawer>
-            <Content>
-              <Hero />
-            </Content>
-        </Layout>
+      <div className={appStyle}>
+        <NavBar />
+        <Hero />
+        <Section />
+        <Section />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

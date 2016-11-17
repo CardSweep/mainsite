@@ -17,13 +17,11 @@
     -->
     <title>CardSweep</title>
     <style>
-      html, body {
-        height: 100%;
+      html, body, #root{
         width: 100%;
-      }
-      #root, .App {
-        height: 100%;
-        width: 100%;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
       }
       body {
         margin: 0;
@@ -31,7 +29,6 @@
         font-family: sans-serif;
       }
     </style>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
     <div id="root"></div>
