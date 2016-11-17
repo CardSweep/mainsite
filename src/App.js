@@ -1,16 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { style } from 'glamor'
 import NavBar from './components/common/nav/NavBar'
-import Hero from './components/Hero'
-import Section from './components/common/Section'
 import Footer from './components/common/footer/Footer'
-
-import 'glamor/reset'
 
 const styles = {
   appStyle: style({
-    flex: 1
+    height: '100%',
+    minHeight: '100%'
   }),
+  contentWrapper: style({
+    height: '100%',
+    minHeight: '100%',
+    display: 'flex',
+    flexDirection: 'column'
+  })
 }
 
 class App extends Component {
@@ -18,13 +21,17 @@ class App extends Component {
     return (
       <div className={styles.appStyle}>
         <NavBar />
-        <Hero />
-        <Section css={style({backgroundColor: '#607D8B'})} />
-        <Section css={style({backgroundColor: '#BDBDBD'})} />
-        <Footer />
+        <div className={styles.contentWrapper}>
+          {this.props.children}
+          <Footer />
+        </div>
       </div>
     )
   }
+}
+
+App.propTypes = {
+  children: PropTypes.element.isRequired
 }
 
 export default App

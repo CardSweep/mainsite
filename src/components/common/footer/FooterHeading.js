@@ -34,6 +34,6 @@ const FooterHeading = (props) => (
 )
 
 FooterHeading.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.string.isRequired
 }
 export default FooterHeading

@@ -22,6 +22,11 @@ const Theme = {
     navBarBorderBottom: 3,
     footerMinHeight: 150,
     transitionSpeedEase: '0.3s ease',
+    buttonWidth: 120,
+    buttonHeight: 45,
+    buttonBorderRadius: 2,
+    buttonInputFontSize: 28,
+    inputGroupMargin: 20
   },
   breakPoints: {
     tablet: '@media(min-width: 700px)',

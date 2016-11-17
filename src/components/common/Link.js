@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import { Link as RouterLink } from 'react-router'
 import { style } from 'glamor'
 import Theme from '../../Theme'
 
@@ -17,17 +18,17 @@ const Link = (props) => {
   }
 
   return (
-    <a
+    <RouterLink
       className={className}
-      href={props.url}>
+      to={props.to}>
       {props.children}
-    </a>
+    </RouterLink>
   )
 }
 
 Link.propTypes = {
   children: PropTypes.element,
   css: PropTypes.object,
-  url: PropTypes.string
+  to: PropTypes.string
 }
 export default Link

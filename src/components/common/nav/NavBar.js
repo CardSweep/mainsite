@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { style } from 'glamor'
 import LogoName from '../../LogoName'
 import SideMenu from './SideMenu'
+import Link from '../Link'
 import Theme from '../../../Theme'
 import menuIcon from '../../../images/menuIcon.svg'
 
@@ -37,6 +38,16 @@ const styles = {
   }),
   navBarHidden: style({
     top: -100
+  }),
+  linkWrapper: style({
+    display: 'flex',
+    flexDirection: 'row',
+    paddingLeft: 5,
+    paddingRight: 20
+  }),
+  linkItem: style({
+    color: 'white',
+    marginLeft: 10
   })
 }
 
@@ -101,7 +112,11 @@ class NavBar extends Component {
           <img className={styles.imgStyle} src={menuIcon} alt='Menu' />
         </button>
         <LogoName />
-        {this.props.children}
+        <div {...style({flex: 1})} />
+        <div className={styles.linkWrapper}>
+          <Link to='/signin'><p className={styles.linkItem}>Sign in</p></Link>
+          <Link to='/signup'><p className={styles.linkItem}>Sign up</p></Link>
+        </div>
         <SideMenu show={this.state.showMenu} showMenu={this.showMenu} />
       </nav>
     )

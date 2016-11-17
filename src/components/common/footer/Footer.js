@@ -25,7 +25,9 @@ const styles = {
   footerColumn: style({
     flex: 1
   }),
-  paraStyle: style({
+  smallStyle: style({
+    display: 'flex',
+    flexDirection: 'row',
     fontSize: 10,
     fontWeight: 100
   })
@@ -48,11 +50,11 @@ const Footer = () => {
         </div>
       </div>
       <div>
-        <p className={styles.paraStyle}>
-          <Link url="#">Terms of Service</Link>
-           &nbsp;&amp;&nbsp;
-          <Link url="#">Privacy Policy</Link>
-        </p>
+        <div className={styles.smallStyle}>
+          <Link url='#'><p>Terms of Service</p></Link>
+          <p>&nbsp;&amp;&nbsp;</p>
+          <Link url='#'><p>Privacy Policy</p></Link>
+        </div>
       </div>
     </div>
   )
