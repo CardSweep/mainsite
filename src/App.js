@@ -3,6 +3,7 @@ import { style } from 'glamor'
 import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import Section from './components/Section'
+import Footer from './components/Footer'
 
 const appStyle = style({
   flex: 1
@@ -16,6 +17,7 @@ class App extends Component {
         <Hero />
         <Section />
         <Section />
+        <Footer />
       </div>
     )
   }
