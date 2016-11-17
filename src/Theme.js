@@ -14,6 +14,10 @@ const Theme = {
     navBarHeight: 64,
     navBarBorderBottom: 3,
     transitionSpeedEase: '0.3s ease'
+  },
+  breakPoints: {
+    tablet: '@media(min-width: 700px)',
+    desktop: '@media(min-width: 900px)'
   }
 }
 
