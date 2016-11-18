@@ -14,7 +14,7 @@ import SignUp from './components/auth/SignUp'
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore)
 let store
 
-if (process.env.REACT_APP_ENV === 'development') {
+if (process.env.NODE_ENV !== 'production') {
   store = createStoreWithMiddleware(
         reducers,
         window.__REDUX_DEVTOOLS_EXTENSION__ &&

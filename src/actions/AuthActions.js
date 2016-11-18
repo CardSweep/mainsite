@@ -4,12 +4,15 @@ export const signInUser = ({email, password}) => {
   return (dispatch) => {
     // submit email password to firebase
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(user => console.log('in action', user))
     // If request is good...
     // - update state
     // - Redirect to user dash if good
+    .then(user => {
+      console.log('in action', user)
+    })
     // If request is bad...
     // - show the error
+    .catch()
   }
 }
 
