@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { style } from 'glamor'
+import { connect } from 'react-redux'
+import { logoutUser } from '../../../actions'
 import LogoName from '../../LogoName'
 import SideMenu from './SideMenu'
 import Link from '../Link'
@@ -63,6 +65,7 @@ class NavBar extends Component {
 
     this.handleScroll = this.handleScroll.bind(this)
     this.showMenu = this.showMenu.bind(this)
+    this.getLinks = this.getLinks.bind(this)
   }
 
   handleScroll () {
@@ -96,6 +99,24 @@ class NavBar extends Component {
     body.onscroll = this.handleScroll
   }
 
+  getLinks () {
+    let links = (
+      <div className={styles.linkWrapper}>
+        <Link to='/signin'><p className={styles.linkItem}>Sign in</p></Link>
+        <Link to='/signup'><p className={styles.linkItem}>Sign up</p></Link>
+      </div>
+    )
+    if (this.props.user) {
+      links = (
+        <div className={styles.linkWrapper}>
+          <Link onClick={this.props.logoutUser}><p className={styles.linkItem}>Sign Out</p></Link>
+        </div>
+      )
+    }
+
+    return links
+  }
+
   render () {
     let className = styles.navBarStyle
 
@@ -113,10 +134,7 @@ class NavBar extends Component {
         </button>
         <LogoName />
         <div {...style({flex: 1})} />
-        <div className={styles.linkWrapper}>
-          <Link to='/signin'><p className={styles.linkItem}>Sign in</p></Link>
-          <Link to='/signup'><p className={styles.linkItem}>Sign up</p></Link>
-        </div>
+        {this.getLinks()}
         <SideMenu show={this.state.showMenu} showMenu={this.showMenu} />
       </nav>
     )
@@ -126,7 +144,16 @@ class NavBar extends Component {
 NavBar.propTypes = {
   children: PropTypes.element,
   className: PropTypes.object,
-  left: PropTypes.element
+  left: PropTypes.element,
+  user: PropTypes.object,
+  logoutUser: PropTypes.func
 }
 
-export default NavBar
+const mapStateToProps = ({ auth }) => {
+  const { user } = auth
+  return {
+    user
+  }
+}
+
+export default connect(mapStateToProps, {logoutUser})(NavBar)

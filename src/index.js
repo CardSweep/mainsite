@@ -10,6 +10,7 @@ import App from './App'
 import Main from './components/main/Main'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
+import Dashboard from './components/Dashboard/Dashboard'
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore)
 let store
@@ -31,6 +32,7 @@ ReactDOM.render(
         <IndexRoute component={Main} />
         <Route path='signin' component={SignIn} />
         <Route path='signup' component={SignUp} />
+        <Route path='dashboard' component={Dashboard} />
       </Route>
     </Router>
   </Provider>,

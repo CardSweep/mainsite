@@ -1,14 +1,13 @@
 import React from 'react'
 import { style } from 'glamor'
-import Hero from '../Hero'
 import Section from '../common/Section'
 
-const Main = () => (
+const Dashboard = () => (
   <div>
-    <Hero />
-    <Section css={style({backgroundColor: '#607D8B'})} />
-    <Section css={style({backgroundColor: '#BDBDBD'})} />
+    <Section css={style({flex: 1})}>
+      Welcome to your Dashboard!!
+    </Section>
   </div>
 )
 
-export default Main
+export default Dashboard

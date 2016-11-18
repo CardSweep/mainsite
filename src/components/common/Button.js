@@ -5,7 +5,7 @@ import Theme from '../../Theme'
 // TODO need to add click feedback styles still
 const styles = {
   button: style({
-    width: Theme.measures.buttonWidth,
+    minWidth: Theme.measures.buttonWidth,
     height: Theme.measures.buttonHeight,
     display: 'flex',
     justifyContent: 'center',

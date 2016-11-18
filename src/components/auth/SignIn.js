@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import { style } from 'glamor'
 import Theme from '../../Theme'
+import FormError from './FormError'
 import Button from '../common/Button'
 import Input from '../common/Input'
 
@@ -22,6 +23,22 @@ const styles = {
     padding: 30,
     borderRadius: 4,
     border: `2px solid ${Theme.colors.primaryColor}`
+  }),
+  buttonWrapper: style({
+    display: 'flex',
+    label: 'buttonWrapper',
+    flex: 1,
+    flexDirection: 'column',
+    paddingTop: 30,
+    paddingBottom: 30,
+    paddingLeft: 10,
+    paddingRight: 0
+  }),
+  buttonRow: style({
+    display: 'flex',
+    flex: 1,
+    label: 'buttonRow',
+    flexDirection: 'row'
   })
 }
 
@@ -34,7 +51,6 @@ let SignIn = class SignIn extends Component {
   }
 
   handleFormSubmit ({ email, password }) {
-    console.log('in handler', email, password)
     this.props.signInUser({email, password})
   }
 
@@ -59,12 +75,21 @@ let SignIn = class SignIn extends Component {
           TODO might need to reevaluate these functions for perf reasons later
           for now it is fine
         */}
-        <Button onClick={() => this.handleGoogleSubmit('google')}>
-          Google
-        </Button>
-        <Button onClick={() => this.handleGoogleSubmit('facebook')}>
-          Facebook
-        </Button>
+        <div className={styles.buttonWrapper}>
+          <FormError />
+          <div className={styles.buttonRow}>
+            <div>
+              <Button onClick={() => this.handleGoogleSubmit('google')}>
+                Google
+              </Button>
+            </div>
+            <div>
+              <Button onClick={() => this.handleGoogleSubmit('facebook')}>
+                Facebook
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
@@ -73,12 +98,13 @@ let SignIn = class SignIn extends Component {
 SignIn.propTypes = {
   handleSubmit: PropTypes.func,
   signInUser: PropTypes.func,
-  signInUserOAuth: PropTypes.func
+  signInUserOAuth: PropTypes.func,
+  error: PropTypes.string
 }
 
 SignIn = reduxForm({
   form: 'signin',
   fields: ['email', 'password']
-}, null, actions)(SignIn)
+})(SignIn)
 
 export default SignIn = connect(null, actions)(SignIn)

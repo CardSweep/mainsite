@@ -7,7 +7,8 @@ const styles = {
   link: style({
     textDecoration: 'none',
     color: Theme.colors.accentColor,
-    fontWeight: Theme.measures.linkWeight
+    fontWeight: Theme.measures.linkWeight,
+    cursor: 'pointer'
   })
 }
 const Link = (props) => {
@@ -16,19 +17,29 @@ const Link = (props) => {
   if (props.css) {
     className += ` ${props.css}`
   }
-
-  return (
-    <RouterLink
-      className={className}
-      to={props.to}>
-      {props.children}
-    </RouterLink>
-  )
+  if (props.onClick) {
+    return (
+      <RouterLink
+        className={className}
+        onClick={props.onClick}>
+        {props.children}
+      </RouterLink>
+    )
+  } else {
+    return (
+      <RouterLink
+        className={className}
+        to={props.to}>
+        {props.children}
+      </RouterLink>
+    )
+  }
 }
 
 Link.propTypes = {
   children: PropTypes.element,
   css: PropTypes.object,
-  to: PropTypes.string
+  to: PropTypes.string,
+  onClick: PropTypes.func
 }
 export default Link
