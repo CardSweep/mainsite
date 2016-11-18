@@ -6,7 +6,7 @@ import Theme from '../../Theme'
 import FormError from './FormError'
 import Button from '../common/Button'
 import Input from '../common/Input'
-import {signUpUser} from '../../actions'
+import {signUpUser, signInUserOAuth} from '../../actions'
 
 // TODO repeating the padding top in all rendered screen is redundant
 // FIND A BETTER WAY!!!
@@ -129,6 +129,6 @@ SignUp = reduxForm({
   fields: ['email', 'password', 'passwordAgain']
 })(SignUp)
 
-SignUp = connect(mapStateToProps, {signUpUser})(SignUp)
+SignUp = connect(mapStateToProps, {signUpUser, signInUserOAuth})(SignUp)
 
 export default SignUp
