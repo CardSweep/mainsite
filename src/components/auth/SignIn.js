@@ -1,9 +1,13 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import { style } from 'glamor'
 import Theme from '../../Theme'
 import Button from '../common/Button'
 import Input from '../common/Input'
+
+// Redux stuff
+import * as actions from '../../actions'
 
 // TODO repeating the padding top in all rendered screen is redundant
 // FIND A BETTER WAY!!!
@@ -21,15 +25,21 @@ const styles = {
   })
 }
 
-class SignIn extends Component {
+let SignIn = class SignIn extends Component {
   constructor (props) {
     super(props)
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleGoogleSubmit = this.handleGoogleSubmit.bind(this)
   }
 
-  handleFormSubmit (values) {
-    console.log(values)
+  handleFormSubmit ({ email, password }) {
+    console.log('in handler', email, password)
+    this.props.signInUser({email, password})
+  }
+
+  handleGoogleSubmit (provider) {
+    this.props.signInUserOAuth(provider)
   }
 
   render () {
@@ -45,16 +55,30 @@ class SignIn extends Component {
             Sign in
           </Button>
         </form>
+        {/*
+          TODO might need to reevaluate these functions for perf reasons later
+          for now it is fine
+        */}
+        <Button onClick={() => this.handleGoogleSubmit('google')}>
+          Google
+        </Button>
+        <Button onClick={() => this.handleGoogleSubmit('facebook')}>
+          Facebook
+        </Button>
       </div>
     )
   }
 }
 
 SignIn.propTypes = {
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  signInUser: PropTypes.func,
+  signInUserOAuth: PropTypes.func
 }
 
-export default reduxForm({
+SignIn = reduxForm({
   form: 'signin',
   fields: ['email', 'password']
-})(SignIn)
+}, null, actions)(SignIn)
+
+export default SignIn = connect(null, actions)(SignIn)

@@ -3,6 +3,8 @@ import { style } from 'glamor'
 import NavBar from './components/common/nav/NavBar'
 import Footer from './components/common/footer/Footer'
 
+import firebase from 'firebase'
+
 const styles = {
   appStyle: style({
     height: '100%',
@@ -17,6 +19,17 @@ const styles = {
 }
 
 class App extends Component {
+
+  componentWillMount () {
+    firebase.initializeApp({
+      apiKey: process.env.REACT_APP_APIKEY,
+      authDomain: process.env.REACT_APP_AUTHDOMAIN,
+      databaseURL: process.env.REACT_APP_DATABASEURL,
+      storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+      messagingSenderId: process.env.REACT_APP_MESSAGINSENDERID
+    })
+  }
+
   render () {
     return (
       <div className={styles.appStyle}>

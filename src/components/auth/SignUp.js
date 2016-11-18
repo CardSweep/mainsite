@@ -37,7 +37,7 @@ class SignUp extends Component {
 
     return (
       <div className={styles.formWrapper}>
-        <form className={styles.form} onSubmit={handleSubmit(this.handleFormSubmit)}>
+        <form className={styles.form} onSubmit={handleSubmit(this.handleFormSubmit)} noValidate>
           <Input label='Email' name='email' type='email' />
           <Input label='Password' name='password' type='password' />
           <Button
