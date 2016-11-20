@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { style } from 'glamor'
 import Theme from '../../Theme'
@@ -40,6 +40,25 @@ const styles = {
   })
 }
 
+const validate = values => {
+  const errors = {}
+  if (!values.email) {
+    errors.email = 'Required'
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address'
+  }
+
+  if (!values.password) {
+    errors.password = 'Required'
+  } else if (values.password.length < 6) {
+    errors.password = 'Password must be 6 or more characters.'
+  }
+  if (values.password !== values.passwordAgain) {
+    errors.passwordAgain = 'Passwords must match'
+  }
+  return errors
+}
+
 let SignUp = class SignUp extends Component {
   constructor (props) {
     super(props)
@@ -47,23 +66,8 @@ let SignUp = class SignUp extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
-  handleFormSubmit ({ email, password, passwordAgain }) {
-    if (password !== passwordAgain) {
-      alert('Passwords Don\'t match')
-      return
-    } else if (email === '' ||
-               email === null ||
-               email === undefined) {
-      alert('Enter a valid email')
-      return
-    } else if (password === '' ||
-               password === null ||
-               password === undefined) {
-      alert('Enter a valid password')
-      return
-    } else {
-      this.props.signUpUser({email, password})
-    }
+  handleFormSubmit ({ email, password }) {
+    this.props.signUpUser({email, password})
   }
 
   handleGoogleSubmit (provider) {
@@ -76,9 +80,9 @@ let SignUp = class SignUp extends Component {
     return (
       <div className={styles.formWrapper}>
         <form className={styles.form} onSubmit={handleSubmit(this.handleFormSubmit)} noValidate>
-          <Input label='Email' name='email' type='email' />
-          <Input label='Password' name='password' type='password' />
-          <Input label='ReType Password' name='passwordAgain' type='password' />
+          <Field label='Email' component={Input} name='email' type='text' />
+          <Field label='Password' component={Input} name='password' type='password' />
+          <Field label='ReType Password' component={Input} name='passwordAgain' type='password' />
           <Button
             action='submit'>
             Sign up
@@ -126,7 +130,7 @@ const mapStateToProps = ({auth}) => {
 
 SignUp = reduxForm({
   form: 'signup',
-  fields: ['email', 'password', 'passwordAgain']
+  validate
 })(SignUp)
 
 SignUp = connect(mapStateToProps, {signUpUser, signInUserOAuth})(SignUp)

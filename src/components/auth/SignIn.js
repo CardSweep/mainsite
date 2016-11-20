@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form'
 import { style } from 'glamor'
 import Theme from '../../Theme'
 import FormError from './FormError'
@@ -42,6 +42,23 @@ const styles = {
   })
 }
 
+const validate = values => {
+  const errors = {}
+  if (!values.email) {
+    errors.email = 'Required'
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address'
+  }
+
+  if (!values.password) {
+    errors.password = 'Required'
+  } else if (values.password.length < 6) {
+    errors.password = 'Password must be 6 or more characters.'
+  }
+
+  return errors
+}
+
 let SignIn = class SignIn extends Component {
   constructor (props) {
     super(props)
@@ -64,8 +81,8 @@ let SignIn = class SignIn extends Component {
     return (
       <div className={styles.formWrapper}>
         <form className={styles.form} onSubmit={handleSubmit(this.handleFormSubmit)}>
-          <Input label='Email' name='email' type='email' />
-          <Input label='Password' name='password' type='password' />
+          <Field label='Email' name='email' type='text' component={Input} />
+          <Field label='Password' name='password' type='password' component={Input} />
           <Button
             action='submit'>
             Sign in
@@ -104,7 +121,7 @@ SignIn.propTypes = {
 
 SignIn = reduxForm({
   form: 'signin',
-  fields: ['email', 'password']
+  validate
 })(SignIn)
 
 export default SignIn = connect(null, actions)(SignIn)

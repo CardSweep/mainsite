@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { syncHistoryWithStore, routerActions, routerMiddleware } from 'react-router-redux'
+import { UserAuthWrapper } from 'redux-auth-wrapper'
 import reduxThunk from 'redux-thunk'
 
 import reducers from './reducers'
@@ -12,7 +14,9 @@ import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import Dashboard from './components/Dashboard/Dashboard'
 
-const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore)
+const routingMiddleware = routerMiddleware(browserHistory)
+
+const createStoreWithMiddleware = applyMiddleware(reduxThunk, routingMiddleware)(createStore)
 let store
 
 if (process.env.NODE_ENV !== 'production') {
@@ -24,15 +28,26 @@ if (process.env.NODE_ENV !== 'production') {
   store = createStoreWithMiddleware(reducers)
 }
 
+// Create an enhanced history that syncs navigation events with the store
+const history = syncHistoryWithStore(browserHistory, store)
+
+// Redirects to /login by default
+const UserIsAuthenticated = UserAuthWrapper({
+  authSelector: state => state.auth.user, // how to get the user state
+  failureRedirectPath: '/signin',
+  redirectAction: routerActions.replace, // the redux action to dispatch for redirect
+  wrapperDisplayName: 'UserIsAuthenticated' // a nice name for this auth check
+})
+
 ReactDOM.render(
   <Provider store={store}
   >
-    <Router history={browserHistory}>
+    <Router history={history}>
       <Route path='/' component={App}>
         <IndexRoute component={Main} />
         <Route path='signin' component={SignIn} />
         <Route path='signup' component={SignUp} />
-        <Route path='dashboard' component={Dashboard} />
+        <Route path='dashboard' component={UserIsAuthenticated(Dashboard)} />
       </Route>
     </Router>
   </Provider>,

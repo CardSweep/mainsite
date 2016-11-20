@@ -5,7 +5,7 @@ import Section from '../common/Section'
 const Dashboard = () => (
   <div>
     <Section css={style({flex: 1})}>
-      Welcome to your Dashboard!!
+      <h1>Welcome to your Dashboard!!</h1>
     </Section>
   </div>
 )
