@@ -7,6 +7,8 @@ import { syncHistoryWithStore, routerActions, routerMiddleware } from 'react-rou
 import { UserAuthWrapper } from 'redux-auth-wrapper'
 import reduxThunk from 'redux-thunk'
 
+import { LOGIN_USER_SUCCESS } from './actions/types'
+
 import reducers from './reducers'
 import App from './App'
 import Main from './components/main/Main'
@@ -31,13 +33,24 @@ if (process.env.NODE_ENV !== 'production') {
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store)
 
-// Redirects to /login by default
+// Redirects to /signin by default if the user is not present
 const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.auth.user, // how to get the user state
   failureRedirectPath: '/signin',
   redirectAction: routerActions.replace, // the redux action to dispatch for redirect
   wrapperDisplayName: 'UserIsAuthenticated' // a nice name for this auth check
 })
+
+// When bootstrapping the application check the localStorage for
+// Firebase auth token.
+for (let key in localStorage) {
+  if (key.startsWith('firebase:authUser:')) {
+    store.dispatch({
+      type: LOGIN_USER_SUCCESS,
+      payload: JSON.parse(localStorage.getItem(key))
+    })
+  }
+}
 
 ReactDOM.render(
   <Provider store={store}
