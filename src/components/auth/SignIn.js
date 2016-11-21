@@ -21,7 +21,7 @@ const styles = {
   }),
   form: style({
     margin: 30,
-    padding: 30,
+    padding: 30
   }),
   buttonWrapper: style({
     display: 'flex',

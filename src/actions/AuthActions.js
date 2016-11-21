@@ -75,8 +75,10 @@ export const signInUserOAuth = (reqProvider) => {
     }
     // call popup
     firebase.auth().signInWithPopup(provider)
-    .then(user => {
-      successHandler(user, dispatch)
+    .then(res => {
+      // NOTE response contains the OAuth Creds as well as the user
+      // should only be sending the user to the successHandler
+      successHandler(res.user, dispatch)
     })
     .catch(error => {
       errorHandler(error, dispatch)

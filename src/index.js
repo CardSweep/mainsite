@@ -7,7 +7,8 @@ import { syncHistoryWithStore, routerActions, routerMiddleware } from 'react-rou
 import { UserAuthWrapper } from 'redux-auth-wrapper'
 import reduxThunk from 'redux-thunk'
 import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/scss/bootstrap.scss'
+import './styles/style.scss'
 
 import { LOGIN_USER_SUCCESS } from './actions/types'
 
