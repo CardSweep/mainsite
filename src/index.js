@@ -6,6 +6,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerActions, routerMiddleware } from 'react-router-redux'
 import { UserAuthWrapper } from 'redux-auth-wrapper'
 import reduxThunk from 'redux-thunk'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { LOGIN_USER_SUCCESS } from './actions/types'
 

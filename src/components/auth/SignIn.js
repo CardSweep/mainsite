@@ -5,6 +5,7 @@ import { style } from 'glamor'
 import Theme from '../../Theme'
 import FormError from './FormError'
 import Button from '../common/Button'
+import Link from '../common/Link'
 import Input from '../common/Input'
 
 // Redux stuff
@@ -14,15 +15,13 @@ import * as actions from '../../actions'
 // FIND A BETTER WAY!!!
 const styles = {
   formWrapper: style({
+    flex: 1,
     paddingTop: Theme.measures.navBarHeight + Theme.measures.navBarBorderBottom,
-    flex: 1
+    margin: 20
   }),
   form: style({
-    flex: 1,
     margin: 30,
     padding: 30,
-    borderRadius: 4,
-    border: `2px solid ${Theme.colors.primaryColor}`
   }),
   buttonWrapper: style({
     display: 'flex',
@@ -80,7 +79,7 @@ let SignIn = class SignIn extends Component {
 
     return (
       <div className={styles.formWrapper}>
-        <form className={styles.form} onSubmit={handleSubmit(this.handleFormSubmit)}>
+        <form className={`card card-block styles.form`} onSubmit={handleSubmit(this.handleFormSubmit)}>
           <Field label='Email' name='email' type='text' component={Input} />
           <Field label='Password' name='password' type='password' component={Input} />
           <Button
@@ -93,6 +92,9 @@ let SignIn = class SignIn extends Component {
           for now it is fine
         */}
         <div className={styles.buttonWrapper}>
+          <div>
+            <p>Don't have an account? <Link to='/signup'><span>Signup</span></Link> or sign in with Google or Facebook.</p>
+          </div>
           <FormError />
           <div className={styles.buttonRow}>
             <div>

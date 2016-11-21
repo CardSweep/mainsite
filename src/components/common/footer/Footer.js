@@ -10,12 +10,14 @@ const styles = {
     minHeight: Theme.measures.footerMinHeight,
     backgroundColor: Theme.colors.darkGray,
     color: 'white',
+    paddingTop: 30,
     paddingLeft: 20,
     paddingRight: 20,
     display: 'flex',
     flexDirection: 'column'
   }),
   footerContent: style({
+    marginTop: 10,
     display: 'flex',
     flexDirection: 'column',
     [Theme.breakPoints.tablet]: {

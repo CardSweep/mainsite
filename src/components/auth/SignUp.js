@@ -66,8 +66,8 @@ let SignUp = class SignUp extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
-  handleFormSubmit ({ email, password }) {
-    this.props.signUpUser({email, password})
+  handleFormSubmit ({ email, password, displayName }) {
+    this.props.signUpUser({email, password, displayName})
   }
 
   handleGoogleSubmit (provider) {
@@ -81,6 +81,7 @@ let SignUp = class SignUp extends Component {
       <div className={styles.formWrapper}>
         <form className={styles.form} onSubmit={handleSubmit(this.handleFormSubmit)} noValidate>
           <Field label='Email' component={Input} name='email' type='text' />
+          <Field label='Display Name' component={Input} name='displayName' type='text' />
           <Field label='Password' component={Input} name='password' type='password' />
           <Field label='ReType Password' component={Input} name='passwordAgain' type='password' />
           <Button
@@ -89,22 +90,7 @@ let SignUp = class SignUp extends Component {
           </Button>
         </form>
         <div className={styles.buttonWrapper}>
-          <div>
-            <p>You can sign up with an email and password or signin with Google or Facebook ...</p>
-          </div>
           <FormError />
-          <div className={styles.buttonRow}>
-            <div>
-              <Button onClick={() => this.handleGoogleSubmit('google')}>
-                Google
-              </Button>
-            </div>
-            <div>
-              <Button onClick={() => this.handleGoogleSubmit('facebook')}>
-                Facebook
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
     )

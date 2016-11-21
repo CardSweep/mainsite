@@ -1,55 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 import { style } from 'glamor'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import { logoutUser } from '../../../actions'
 import LogoName from '../../LogoName'
-import SideMenu from './SideMenu'
-import Link from '../Link'
 import Theme from '../../../Theme'
-import menuIcon from '../../../images/menuIcon.svg'
 
 const styles = {
-  navBarStyle: style({
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    display: 'flex',
-    alignItems: 'center',
-    height: Theme.measures.navBarHeight,
-    minHeight: Theme.measures.navBarHeight,
-    width: '100%',
-    backgroundColor: Theme.colors.primaryColor,
-    color: Theme.colors.textIcons,
-    borderBottom: `solid ${Theme.measures.navBarBorderBottom}px ${Theme.colors.darkPrimaryColor}`,
-    boxShadow: `0px 3px 3px 0px ${Theme.colors.shadowColor}`,
-    transition: `top ${Theme.measures.transitionSpeedEase}`
-  }),
-  buttonStyle: style({
-    backgroundColor: 'rgba(255,255,255,0)',
-    border: 'none',
-    outline: 'none',
-    height: Theme.measures.navBarHeight,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 75
-  }),
   imgStyle: style({
     width: 40
   }),
-  navBarHidden: style({
-    top: -100
-  }),
-  linkWrapper: style({
-    display: 'flex',
-    flexDirection: 'row',
-    paddingLeft: 5,
-    paddingRight: 20
-  }),
   linkItem: style({
-    color: 'white',
-    marginLeft: 10
+    color: Theme.colors.white,
+    cursor: 'pointer'
   })
 }
 
@@ -57,60 +20,17 @@ class NavBar extends Component {
 
   constructor (props) {
     super(props)
-    this.state = {
-      height: 0,
-      lastScroll: 0,
-      showMenu: false
-    }
 
-    this.handleScroll = this.handleScroll.bind(this)
-    this.showMenu = this.showMenu.bind(this)
     this.getLinks = this.getLinks.bind(this)
-  }
-
-  handleScroll () {
-    let body = document.querySelector('body')
-    let scroll = body.scrollTop
-
-    if (scroll > this.state.lastScroll && scroll > 300 && !this.state.showMenu) {
-      this.nav.className = `${styles.navBarStyle} ${styles.navBarHidden}`
-    } else {
-      this.nav.className = styles.navBarStyle
-    }
-
-    this.setState({
-      lastScroll: scroll
-    })
-  }
-
-  showMenu () {
-    this.setState({
-      showMenu: !this.state.showMenu
-    })
-  }
-
-  componentDidMount () {
-    let body = document.querySelector('body')
-
-    this.setState({
-      height: body.innerHeight
-    })
-
-    body.onscroll = this.handleScroll
   }
 
   getLinks () {
     let links = (
-      <div className={styles.linkWrapper}>
-        <Link to='/signin'><p className={styles.linkItem}>Sign in</p></Link>
-        <Link to='/signup'><p className={styles.linkItem}>Sign up</p></Link>
-      </div>
+      <Link className={`nav-link ${styles.linkItem}`} to='/signin'>Sign in</Link>
     )
     if (this.props.user) {
       links = (
-        <div className={styles.linkWrapper}>
-          <Link onClick={this.props.logoutUser}><p className={styles.linkItem}>Sign Out</p></Link>
-        </div>
+        <Link className={`nav-link ${styles.linkItem}`} onClick={this.props.logoutUser}>Sign Out</Link>
       )
     }
 
@@ -118,24 +38,28 @@ class NavBar extends Component {
   }
 
   render () {
-    let className = styles.navBarStyle
-
-    if (this.props.className !== undefined) {
-      className += this.props.className
-    }
-
     return (
-      <nav
-        ref={(nav) => (this.nav = nav)}
-        className={className}
-      >
-        <button onClick={this.showMenu} {...styles.buttonStyle}>
-          <img className={styles.imgStyle} src={menuIcon} alt='Menu' />
-        </button>
-        <LogoName />
-        <div {...style({flex: 1})} />
-        {this.getLinks()}
-        <SideMenu show={this.state.showMenu} showMenu={this.showMenu} />
+      <nav ref={(nav) => (this.nav = nav)} className={`navbar navbar-fixed-top navbar-dark bg-primary`}>
+        <button className='navbar-toggler hidden-lg-up' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation' />
+        <div className='collapse navbar-toggleable-md' id='navbarResponsive'>
+          <div className='navbar-brand' href='#'>
+            <LogoName />
+          </div>
+          <ul className='nav navbar-nav'>
+            <li className='nav-item active'>
+              <a className='nav-link' href='#'>Home <span className='sr-only'>(current)</span></a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link' href='#'>Link</a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link' href='#'>Link</a>
+            </li>
+            <li className='nav-item float-lg-right'>
+              {this.getLinks()}
+            </li>
+          </ul>
+        </div>
       </nav>
     )
   }

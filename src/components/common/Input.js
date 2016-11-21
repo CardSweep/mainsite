@@ -39,13 +39,23 @@ const styles = {
 }
 
 const Input = ({ input, name, label, type, meta: { touched, error, warning } }) => {
+  let feedback
+  if (error) {
+    feedback = 'has-danger'
+  }
+  if (warning) {
+    feedback = 'has-warning'
+  }
   return (
-    <div className={styles.group}>
+    <div className={`form-group ${feedback}`}>
       <label className={styles.label}>{label}</label>
-      <div className={styles.inputWrapper}>
-        <input className={styles.input} {...input} placeholder={label} type={type} />
-        {touched && ((error && <span className={styles.error}>{error}</span>) || (warning && <span>{warning}</span>))}
-      </div>
+      <input className='form-control form-control-lg' {...input} placeholder={label} type={type} />
+      {
+        touched && (
+          (error && <div className='form-control-feedback'>{error}</div>) ||
+          (warning && <div className='form-control-feedback'>{warning}</div>)
+        )
+      }
     </div>
   )
 }

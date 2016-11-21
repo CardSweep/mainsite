@@ -3,6 +3,7 @@ const Theme = {
     darkPrimaryColor: '#388E3C',
     primaryColor: '#4CAF50',
     lightPrimaryColor: '#C8E6C9',
+    white: '#FFFFFF',
     textIcons: '#FFFFFF',
     accentColor: '#FF9800',
     danger: 'red',

@@ -4,9 +4,8 @@ import { connect } from 'react-redux'
 import Section from '../common/Section'
 
 const Dashboard = (props) => {
-  console.log(props.user)
   return (
-    <div>
+    <div {...style({ flex: 1})}>
       <Section css={style({flex: 1})}>
         <h1>Welcome to your dashboard { props.user.displayName || props.user.email }</h1>
       </Section>

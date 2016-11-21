@@ -1,32 +1,21 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { style } from 'glamor'
 import Theme from '../../Theme'
 
 // TODO need to add click feedback styles still
 const styles = {
   button: style({
-    minWidth: Theme.measures.buttonWidth,
-    height: Theme.measures.buttonHeight,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    border: 'none',
-    outline: 'none',
-    borderRadius: Theme.measures.buttonBorderRadius,
-    fontSize: Theme.measures.buttonInputFontSize,
-    padding: 5,
-    color: Theme.colors.primaryText,
-    backgroundColor: Theme.colors.accentColor,
-    boxShadow: `0 2px 5px 0 rgba(0, 0, 0, 0.26)`,
-    margin: Theme.measures.inputGroupMargin,
-    cursor: 'pointer'
+    marginRight: Theme.measures.inputGroupMargin
   })
 }
 
 const Button = (props) => (
-  <button {...props} className={styles.button}>
+  <button {...props} className={`btn btn-outline-primary btn-lg ${styles.button}`}>
     {props.children}
   </button>
 )
 
+Button.propTypes = {
+  children: PropTypes.string
+}
 export default Button

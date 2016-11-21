@@ -6,9 +6,10 @@ import logo from '../images/logo.svg'
 
 // Glamor styles
 const img = style({
-  height: 50,
-  width: 50,
-  marginRight: 10
+  height: 30,
+  width: 'auto',
+  marginRight: 10,
+  marginTop: -5
 })
 
 const wrapper = style({

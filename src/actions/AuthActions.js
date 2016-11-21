@@ -41,17 +41,22 @@ export const signInUser = ({email, password}) => {
   }
 }
 
-export const signUpUser = ({email, password}) => {
+export const signUpUser = ({email, password, displayName}) => {
   return (dispatch) => {
     dispatch({type: SIGNUP_USER})
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(user => {
-        dispatch({type: SIGNUP_USER_SUCCESS, payload: user})
-        // TODO need to send with params since this will be a users first time
-        // seeing the dashboard
-        browserHistory.push('/dashboard')
-      })
-      .catch(error => {
+        user.updateProfile({
+          displayName
+        }).then(() => {
+          dispatch({type: SIGNUP_USER_SUCCESS, payload: user})
+          // TODO need to send with params since this will be a users first time
+          // seeing the dashboard
+          browserHistory.push('/dashboard')
+        }).catch(error => {
+          dispatch({type: SIGNUP_USER_FAIL, payload: error.message})
+        })
+      }).catch(error => {
         dispatch({type: SIGNUP_USER_FAIL, payload: error.message})
       })
   }
