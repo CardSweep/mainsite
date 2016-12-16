@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="768px" height="438px" viewBox="0 0 768 438" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="748" height="418" rx="26"></rect>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1024" transform="translate(-77.000000, -247.000000)">
+            <g id="Group-3" transform="translate(87.000000, 252.000000)">
+                <g id="Group">
+                    <g id="Rectangle">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#C8E6C9" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <ellipse id="Oval-2" fill="#F37BA3" cx="674.222656" cy="350.038462" rx="41.6367188" ry="41.6538462"></ellipse>
+                    <ellipse id="Oval-2" fill="#F37BA3" cx="582.804491" cy="350.659614" rx="32.0310536" ry="32.0442297"></ellipse>
+                    <ellipse id="Oval-2" fill="#F37BA3" cx="507.157149" cy="350.557307" rx="26.0850384" ry="26.0957686"></ellipse>
+                    <rect id="Rectangle-2" fill="#505D72" x="0" y="86.2307692" width="748" height="76"></rect>
+                    <rect id="Rectangle-2" fill="#9B9B9B" x="497.304688" y="195" width="218.695312" height="30.9733728"></rect>
+                    <rect id="Rectangle-2" fill="#9B9B9B" x="498.058809" y="247.33432" width="187.022198" height="30.9733728"></rect>
+                </g>
+                <g id="Group-2" transform="translate(166.390133, 274.390133) rotate(45.000000) translate(-166.390133, -274.390133) translate(110.390133, 155.890133)">
+                    <path d="M48.2550803,161.96253 L48.2550803,169.919485 L64.1689898,169.919485 L64.1689898,161.96253 L64.1689898,7.95695473 L64.1689898,7.95118759 C64.1689898,3.55986794 60.5975978,3.55271368e-13 56.212035,3.55271368e-13 L56.212035,3.55271368e-13 C51.8175303,3.55271368e-13 48.2550803,3.55956382 48.2550803,7.95118759 L48.2550803,7.95695473 L48.2550803,161.96253 Z" id="Line" fill="#795548"></path>
+                    <path d="M109.343959,162.219206 C109.343959,143.349513 85.4410684,108.830607 55.9553591,108.830607 C26.4696498,108.830607 2.56675959,132.733497 2.56675959,162.219206 L109.343959,162.219206 Z" id="Combined-Shape" fill="#F5B146"></path>
+                    <path d="M2.56675959,162.219206 L109.343959,162.219206 L111.910718,236.655234 L1.42108547e-12,236.655234 L2.56675959,162.219206 Z M68.2758051,224.334788 L74.4360281,236.655234 L62.1155821,236.655234 L68.2758051,224.334788 Z M85.7297703,215.094454 L96.5101606,236.655234 L74.94938,236.655234 L85.7297703,215.094454 Z" id="Combined-Shape" fill="#F5B146"></path>
+                    <polygon id="Rectangle-4" fill="#F27BA3" points="2.20099635 169.870957 109.582988 169.870957 109.58787 173.512948 2.20099635 174.119746"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
