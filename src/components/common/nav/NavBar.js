@@ -55,8 +55,8 @@ class NavBar extends Component {
           iconElementRight={this.getLinks()}
         />
         <Drawer containerStyle={{paddingTop: 75}} open={this.state.open}>
-          <MenuItem><Link to=''>Buy Gift Cards</Link></MenuItem>
-          <MenuItem><Link to='/sell'>Sell Gift Cards</Link></MenuItem>
+          <MenuItem onClick={this.handleTouchTap}><Link to=''>Buy Gift Cards</Link></MenuItem>
+          <MenuItem onClick={this.handleTouchTap}><Link to='/sell'>Sell Gift Cards</Link></MenuItem>
         </Drawer>
       </div>
     )
