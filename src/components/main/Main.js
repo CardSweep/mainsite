@@ -1,14 +1,17 @@
 import React from 'react'
-import { style } from 'glamor'
+import { css } from 'glamor'
+import { darkWhite, blue500 } from 'material-ui/styles/colors'
+import H1 from '../common/H1'
+import SubHeading from '../common/SubHeading'
 import Hero from '../Hero'
 import Section from '../common/Section'
 import cardImg from '../../images/cards.png'
 
 import Theme from '../../Theme'
 
-const jumboStyle = style({
+const jumboStyle = css({
   backgroundColor: 'rgba(0,0,0,.27)',
-  color: 'white',
+  color: darkWhite,
   height: '100%',
   width: '100%',
   display: 'flex',
@@ -17,31 +20,30 @@ const jumboStyle = style({
   justifyContent: 'center',
   alignItems: 'center'
 })
-const containerStyle = style({
+const containerStyle = css({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center'
 })
 
-const propContainerStyle = style({
+const propContainerStyle = css({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center'
 })
 
-const propStyle = style({
+const propStyle = css({
   textAlign: 'center',
   maxWidth: '33.33%',
   padding: '1rem',
-  color: 'white'
 })
-const spacer = style({
+const spacer = css({
   width: '10%'
 })
 
-const guaranteeStyle = style({
+const guaranteeStyle = css({
   paddingTop: '3rem',
   paddingBottom: '3rem',
   paddingLeft: '5rem',
@@ -51,14 +53,14 @@ const guaranteeStyle = style({
   flexDirection: 'row'
 })
 
-const helpBar = style({
-  color: 'white',
+const helpBar = css({
+  color: darkWhite,
   width: '100%',
-  backgroundColor: Theme.colors.primaryColor,
+  backgroundColor: blue500,
   paddingLeft: '5rem',
   paddingRight: '5rem',
   paddingTop: '1rem',
-  paddingBottom: '.2rem'
+  paddingBottom: '1rem'
 })
 
 const Main = () => (
@@ -66,12 +68,12 @@ const Main = () => (
     <Hero>
       <div {...jumboStyle} className='jumbotron'>
         <div {...containerStyle} className='container'>
-          <h1>Welcome to the CardSweep!</h1>
-          <h2>Buy and Sell gift cards with ease.</h2>
+          <H1 style={{color: darkWhite, fontSize: '5rem'}} text='Welcome to CardSweep!'/>
+          <SubHeading style={{color: darkWhite}} text='Buy and Sell gift cards with ease.' />
         </div>
       </div>
     </Hero>
-    <Section css={style({backgroundColor: '#607D8B'})}>
+    <Section css={css({backgroundColor: darkWhite})}>
       <div {...propContainerStyle} className='container'>
         <div {...propStyle} className='prop left'>
           <h3>Sell Gift Cards</h3>

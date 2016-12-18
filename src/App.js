@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { blue500, blue700, blue100, yellow500, grey400, grey600 } from 'material-ui/styles/colors'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import { style } from 'glamor'
 import NavBar from './components/common/nav/NavBar'
@@ -20,12 +21,12 @@ const styles = {
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: '#2196F3',
-    primary2Color: '#1976D2',
-    primary3Color: '#BBDEFB',
-    accent1Color: '#FFEB3B',
-    accent2Color: '#BDBDBD',
-    accent3Color: '#757575',
+    primary1Color: blue500,
+    primary2Color: blue700,
+    primary3Color: blue100,
+    accent1Color: yellow500,
+    accent2Color: grey400,
+    accent3Color: grey600,
   },
 });
 
