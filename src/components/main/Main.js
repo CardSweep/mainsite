@@ -7,8 +7,6 @@ import Hero from '../Hero'
 import Section from '../common/Section'
 import cardImg from '../../images/cards.png'
 
-import Theme from '../../Theme'
-
 const jumboStyle = css({
   backgroundColor: 'rgba(0,0,0,.27)',
   color: darkWhite,
